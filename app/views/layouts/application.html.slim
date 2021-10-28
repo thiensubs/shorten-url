@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title
+      | Shorten Share-URL
+    meta content="width=device-width, initial-scale=1.0" name="viewport"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = action_cable_meta_tag
+  body
+    .wrapper.container
+      #header
+        = render 'partials/nav'
+      #wrapper.content
+        = flash_messages
+        #page-content-wrapper
+          = yield
+  footer.text-center
+    p &copy; Copyright Tien An (anvotien@gmail.com)

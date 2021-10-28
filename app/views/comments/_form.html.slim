@@ -1,0 +1,5 @@
+= simple_form_for @comment, url: comments_path, html: {class: '', novalidate: false, remote: true}, wrapper: :horizontal_form  do |f|
+  = f.input :content, autofocus: true, input_html: { class: 'form-control' }, required: true, minlength: 2,  placeholder: "Input the content", as: :text
+  .form-group.row.mb-0
+    .text-center.col-12
+      = f.button :submit, 'Comment', data: { disable_with: "Commenting..."}, class: 'btn btn-success'

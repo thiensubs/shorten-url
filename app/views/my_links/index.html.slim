@@ -1,0 +1,44 @@
+table.table.table-hover
+  thead
+    tr
+      th[scope="col"]
+        | #
+      th[scope="col"]
+        | A URL
+      th[scope="col"]
+        | Short URL
+      th[scope="col"]
+        | Created At
+      th[scope="col"]
+        | Number of views
+      th[scope="col"]
+        | Actions
+  tbody
+    - if @links.size > 0
+      - @links.try(:each_with_index) do |item, index|
+        tr
+          th[scope="row"]
+            = index
+          td
+            = item.a_url
+          td
+            = link_to item.short_url, point_now_path(item.short_url), target: "_blank"
+          td
+            = distance_of_time_in_words(Time.current, item.created_at)
+          td
+            = item.num_of_views
+          td
+            = link_to my_link_path(item), data: {confirm: 'Are you sure to delete this SHORT LINK ?'}, method: 'DELETE', class: 'dropdown-item bg-danger'
+              i.dropdown-icon.fe.fe-trash
+              |  Delete
+            = link_to edit_my_link_path(item), class: 'dropdown-item bg-success'
+              i.dropdown-icon.fe.fe-edit
+              |  Edit
+    - else
+      tr
+        th 
+          | No Records.
+.p-2
+  .will_paginate.mx-auto
+    = will_paginate @links
+       

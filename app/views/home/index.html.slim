@@ -1,0 +1,32 @@
+section#newShorterForm
+  .row
+    .col-md-5.order-md-2.mb-4
+      h4.d-flex.justify-content-between.align-items-center.mb-3
+        - if current_user
+          span.text-muted
+            | Your links
+        - else
+          span.text-muted
+            | Top links
+        span.badge.badge-secondary.badge-pill
+          =@links.try(:total_entries)
+      ul.list-group.mb-3
+        - @links.try(:each_with_index) do |link, idx|
+          li.list-group-item.d-flex.justify-content-between.lh-condensed[class=("bg-light") if idx==0]
+            div
+              h6.my-0
+                a[href=link.short_url target="_blank"]
+                  = link.short_url
+              small.text-muted
+                = link.a_url
+            span.text-muted
+              = link.num_of_views
+      .p-2
+        .will_paginate.mx-auto
+          = will_paginate @links
+    .col-md-7.order-md-1
+      - if current_user
+        h4.d-flex.justify-content-between.align-items-center.mb-3
+          span.text-muted
+            | Shorten the URL in seconds
+        =render 'my_links/form'
