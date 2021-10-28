@@ -15,9 +15,9 @@ class Api::V1::MyLinksController < Api::V1::ApiController
   api :GET, 'api/v1/my_links', 'API listing your links'
   description <<-EOF
       =NOTES:
-       THIS REQUIRED AUTHENTICATION VIA JWT TOKEN, MAKE SURE YOU ARE SIGN IN AND ADD JIT TOKEN TO HEADER.
+       THIS REQUIRED AUTHENTICATION VIA JWT TOKEN, MAKE SURE YOU ARE SIGN IN AND ADD JTI TOKEN TO HEADER.
       =EX:
-        request["Authorization"] = "Bearer 90a7e4bb-85fc-42c4-959a-3478e7253b34"
+        request["Authorization"] = "Bearer jti"
   EOF
 
   # errors code if have any
@@ -40,9 +40,9 @@ class Api::V1::MyLinksController < Api::V1::ApiController
   api :POST, 'api/v1/my_links', 'Create new shorten url'
   description <<-EOF
       =NOTES:
-       THIS REQUIRED AUTHENTICATION VIA JWT TOKEN, MAKE SURE YOU ARE SIGN IN AND ADD JIT TOKEN TO HEADER.
+       THIS REQUIRED AUTHENTICATION VIA JWT TOKEN, MAKE SURE YOU ARE SIGN IN AND ADD JTI TOKEN TO HEADER.
       =EX:
-        request["Authorization"] = "Bearer 90a7e4bb-85fc-42c4-959a-3478e7253b34"
+        request["Authorization"] = "Bearer jti"
   EOF
   # errors code if have any
   error code: 404, desc: 'Not Found'
