@@ -48,7 +48,7 @@ Visit the API Documentation
   ```localhost:3000/api/doc``
 
 
-## SHORTERN URL Algorithm.
+## SHORTEN URL Algorithm.
 
 Take a deep look at app/models/my_link.rb
   
